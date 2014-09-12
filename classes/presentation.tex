@@ -1,0 +1,494 @@
+\documentclass[hyperref={pdftex,unicode}]{beamer}
+
+\input{packages}
+\input{styles}
+
+\input{info}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}{Сегодня}
+  \begin{itemize}
+    \item ООП
+      \begin{itemize}
+      \item Инкапсуляция
+      \item Наследование
+      \item Полиморфизм
+      \end{itemize}
+    \item Работа с исключениями
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Объектно-ориентированное программирование}
+  Объект --- сущность, состоящая из \\
+  \begin{itemize}
+  \item данных (полей, атрибутов) и 
+  \item методов обработки этих данных (методов объекта).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Пример объекта}
+  \begin{minipage}{0.6\linewidth}
+  Кроме прочих своих достоинств, кот
+  \begin{itemize}
+    \item демонстрирует характерное поведение,
+    \item реагирует на сообщения,
+    \item наделён унаследованными реакциями,
+    \item управляет своим, вполне независимым, внутренним состоянием.\footnote[frame]{
+   Roger King, My cat is object-oriented}
+ \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+ \begin{figure}[h!]
+   \includegraphics[width=1\linewidth]{cat.jpg}
+ \end{figure}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Область применения ООП}
+  Объектно-ориентированный подход хорош там, где проект подразумевает долгосрочное развитие,
+  состоит из большого количества библиотек и внутренних связей.
+\end{frame}
+
+
+\begin{frame}[fragile]{Объявление класса [dataClass.py]}
+    \begin{lstlisting}[numbers=left]
+class exampleDataClass:                                                                         
+    """A data example class"""
+                                                         
+    cls_var = "cls_data"                                                                        
+
+    def __init__(self):                                                                         
+        self.obj_var = "obj_data"   
+                                                            
+    def f(self):                                                                                
+        return self.obj_var
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Атрибуты объекта [dataExample1.py]}
+\begin{minipage}{0.6\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\scriptsize\ttfamily]
+import dataClass as dc                                                                          
+                                                                                                
+o1 = dc.exampleDataClass();                                                                     
+o2 = dc.exampleDataClass();                                                                     
+                                                                                                
+print "obj_var is object data member:"                                                             
+print "BEFORE:"                                                                                 
+print "o1.obj_var: ", o1.obj_var                                                                
+print "o2.obj_var:", o2.obj_var                                                                 
+                                                                                                
+o1.obj_var = "new_object_data"                                                                  
+                                                                                                
+print "AFTER:"                                                                                  
+print "o1.obj_var:", o1.obj_var                                                                
+print "o2.obj_var:", o2.obj_var  
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\tiny\ttfamily,numbers=none]
+class exampleDataClass:                                                                                                      
+    cls_var = "cls_data"                                                                        
+
+    def __init__(self):                                                                         
+        self.obj_var =
+            "obj_data"   
+                                                            
+    def f(self):                                                                                
+        return self.obj_var
+    \end{lstlisting}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Атрибуты класса [dataExample2.py]}
+\begin{minipage}{0.6\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\scriptsize\ttfamily]
+import dataClass as dc                                                                          
+                                                                                                
+o1 = dc.exampleDataClass();                                                                     
+o2 = dc.exampleDataClass();                                                                     
+                                                                                                
+print "Data is object data member:"                                                             
+print "BEFORE:"                                                                                 
+print "o1.cls_var:", o1.cls_var                                                                 
+print "o2.cls_var:", o2.cls_var                                                                 
+                                                                                                
+dc.exampleDataClass.cls_var = \
+               "new_object_data"                                                 
+                                                                                                
+print "AFTER:"                                                                                  
+print "o1.cls_var: ", o1.cls_var                                                                
+print "o2.cls_var:", o2.cls_var 
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\tiny\ttfamily,numbers=none]
+class exampleDataClass:                                                                                                      
+    cls_var = "cls_data"                                                                        
+
+    def __init__(self):                                                                         
+        self.obj_var =
+            "obj_data"   
+                                                            
+    def f(self):                                                                                
+        return self.obj_var
+    \end{lstlisting}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Изменение атрибутов объекта}
+\begin{center}
+  \begin{tabular}[h!]{p{0.45\linewidth} p{0.54\linewidth}}
+    getattr(object, name) & var = object.name \\
+    setattr(object, name, value) & object.name = value \\
+    delattr(object, name) & del object.name \\
+    hasattr(object, name) & \scriptsize{
+      implemented by calling getattr(object, name)
+      
+      and seeing whether it raises an exception or not} \\
+  \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Изменение атрибутов объекта [dataExample3.py]}
+\begin{minipage}{0.6\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\scriptsize\ttfamily]
+import dataClass as dc                                                                          
+                                                                                                
+o = dc.exampleDataClass();                                                                      
+print dir(o);                                                                                   
+                                                                                                
+del o.obj_var                                                                                   
+o.new_data = "some_data"                                                                        
+o.f2 = lambda x: x * 3                                                                          
+                                                                                                
+print dir(o);                                                                                   
+print o.new_data                                                                                
+print o.f2("M")
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\linewidth}
+    \begin{lstlisting}[numbers=left,basicstyle=\tiny\ttfamily,numbers=none]
+class exampleDataClass:                                                                                                      
+    cls_var = "cls_data"                                                                        
+
+    def __init__(self):                                                                         
+        self.obj_var =
+            "obj_data"   
+                                                            
+    def f(self):                                                                                
+        return self.obj_var
+    \end{lstlisting}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Инкапсуляция}
+    \begin{lstlisting}
+class Simple:
+    """ Simple class with private attribute """
+    def __init__(self, count, str):
+        self.__private_attr = 20
+        print self.__private_attr
+ 
+s = Simple(1,'22')
+print s.__private_attr
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Наследование}
+Синтаксис:
+    \begin{lstlisting}[numbers=none]
+class Derived(Base):
+    pass
+class Derived(module_name.Base):
+    pass
+class Derived(Base1, Base2, Base3):  
+    pass
+    \end{lstlisting}
+Особенности:
+\begin{itemize}
+\item Все методы --- виртуальные;
+\item Вызов метода базового класса: \lstinline$Base.method()$;
+\item Порядок поиска атрибута:
+  \begin{enumerate}
+    \item
+      Derived,
+    \item Base1, затем рекурсивно в базовых классах,
+    \item Base2, затем рекурсивно в базовых классах $\dots$
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Наследование}
+\begin{itemize}
+\item type(object);
+\item isinstance(object, classinfo);
+\item issubclass(class, classinfo).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Встроенные методы классов}
+  \begin{itemize}
+  \item \_\_name\_\_
+  \item \_\_module\_\_
+  \item \_\_dict\_\_
+  \item \_\_bases\_\_
+  \item \_\_doc\_\_
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Встроенные методы объектов}
+  \begin{itemize}
+  \item \_\_dict\_\_
+  \item \_\_class\_\_
+  \item \_\_init\_\_
+  \item \_\_del\_\_
+  \item \_\_cmp\_\_
+  \item \_\_hash\_\_
+  \item \_\_getattr\_\_
+  \item \_\_setattr\_\_
+  \item \_\_delattr\_\_
+  \item \_\_call\_\_
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Эмуляция последовательностей}
+  \begin{minipage}{0.3\linewidth}
+    \begin{itemize}
+    \item \_\_len\_\_
+    \item \_\_getitem\_\_
+    \item \_\_setitem\_\_
+    \item \_\_delitem\_\_
+    \item \_\_getslice\_\_
+    \item \_\_setslice\_\_
+    \item \_\_delslice\_\_
+    \item \_\_contains\_\_
+    \end{itemize}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.65\linewidth}
+    \begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+import logging
+
+class LoggingDict(dict):
+    def __setitem__(self, key, value):
+        logging.info(
+            "Setting {k} to {v}".\
+            format(k=key, v=value))
+        return super(LoggingDict, self).\
+        __setitem__(key, value)
+
+logging.basicConfig(level=logging.INFO)
+
+ld = LoggingDict()
+ld["a"] = 123
+      \end{lstlisting}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Приведение к базовым типам}
+  \begin{itemize}
+  \item \_\_repr\_\_
+  \item \_\_str\_\_
+  \item \_\_oct\_\_
+  \item \_\_hex\_\_
+  \item \_\_complex\_\_
+  \item \_\_int\_\_
+  \item \_\_long\_\_
+  \item \_\_float\_\_
+  \end{itemize}\
+\end{frame}
+
+\begin{frame}[fragile]{Пример перегрузки операторов}
+    \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+class SignableMatrix:
+    def __init__(self, array=[[]]):
+        self.array = dc(array)
+        dim_size = len(self.array)
+        self.__row_signs = [False for i in range(dim_size)]
+        self.__col_signs = [False for i in range(dim_size)]
+
+    def __repr__(self):
+        repr_str = "Matrix: [\n"
+        for row in self.array:
+            repr_str += "    {}\n".format(row)
+        repr_str += "]\n"
+        repr_str += "Row signs:\n    {}\n".format(self.__row_signs)
+        repr_str += "Column signs:\n    {}".format(self.__col_signs)
+        
+        return repr_str
+
+init_graph = [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+init_matrix = SignableMatrix(init_graph)
+
+print init_matrix
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Остальные магические методы}
+\begin{itemize}
+  \item http://www.rafekettler.com/magicmethods.html
+  \item \scriptsize{https://docs.python.org/2/reference/datamodel.html\#special-method-names}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Декораторы классов}
+  \begin{itemize}
+  \item @staticmethod
+  \item @classmethod
+  \item @property
+  \item @setter
+  \item @deleter
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Исключения}
+Обработка исключительных ситуаций --- \\
+механизм языков программирования, \\
+предназначенный для описания реакции программы на возможные проблемы (исключения), \\
+которые могут возникнуть при выполнении программы \\
+и приводят к невозможности (бессмысленности) \\
+дальнейшей отработки программой её базового алгоритма.~\footnote[frame]{
+http://en.wikipedia.org/wiki/Exception\_handling}
+\end{frame}
+
+\begin{frame}[fragile]{Как ловить исключение}
+  \begin{lstlisting}
+for arg in sys.argv[1:]:
+  try:
+      f = open(arg, 'r')
+  except IOError:
+      print 'cannot open', arg
+  else:
+      print arg, 'has', len(f.readlines()), 'lines'
+      f.close()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Как сгенерировать исключение}
+  \begin{lstlisting}
+try:
+    raise Exception('spam', 'eggs')
+except Exception as inst:
+    print type(inst)    
+    print inst.args     
+    print inst          
+    x, y = inst.args
+    print 'x =', x
+    print 'y =', y
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Безопасное деление}
+  \begin{lstlisting}
+def divide(x, y):
+     try:
+         result = x / y
+     except ZeroDivisionError:
+         print "division by zero!"
+     else:
+         print "result is", result
+     finally:
+         print "executing finally clause"
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Стандартные исключения}
+\begin{minipage}{0.45\linewidth}
+  \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+BaseException
+ +-- SystemExit
+ +-- KeyboardInterrupt
+ +-- GeneratorExit
+ +-- Exception
+      +-- StopIteration
+      +-- StandardError
+      +-- Warning
+
+
+ +-- Warning
+      +-- DeprecationWarning
+      +-- PendingDeprecationWarning
+      +-- RuntimeWarning
+      +-- SyntaxWarning
+      +-- UserWarning
+      +-- FutureWarning
+      +-- ImportWarning
+      +-- UnicodeWarning
+      +-- BytesWarning
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+  \begin{lstlisting}[basicstyle=\tiny\ttfamily]
++-- StandartError
+    +-- BufferError
+    +-- ArithmeticError
+    |    +-- FloatingPointError
+    |    +-- OverflowError
+    |    +-- ZeroDivisionError
+    +-- AssertionError
+    +-- AttributeError
+    +-- EnvironmentError
+    |    +-- IOError
+    |    +-- OSError ...
+    +-- EOFError
+    +-- ImportError
+    +-- LookupError
+    |    +-- IndexError
+    |    +-- KeyError
+    +-- MemoryError
+    +-- NameError
+    |    +-- UnboundLocalError
+    +-- ReferenceError
+    +-- RuntimeError
+    |    +-- NotImplementedError
+    +-- SyntaxError
+    |    +-- IndentationError
+    |         +-- TabError
+    +-- SystemError
+    +-- TypeError
+    +-- ValueError
+         +-- UnicodeError ...
+\end{lstlisting}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Полезные ссылки}
+  \begin{itemize}
+    \item https://docs.python.org/2/tutorial/classes.html
+    \item https://docs.python.org/2/library/exceptions.html
+    \item http://www.rafekettler.com/magicmethods.html
+      \scriptsize{
+      \item https://docs.python.org/2/reference/datamodel.html\#special-method-names
+      \item http://www.ibm.com/developerworks/ru/library/l-python\_part\_6/
+      \item https://www.ibm.com/developerworks/ru/library/l-python\_part\_7/ 
+      }
+    % \item http://zetcode.com/lang/python/functions/
+    % \item https://docs.python.org/2/library/functions.html
+    % \item https://docs.python.org/2/howto/functional.html
+    % \item https://docs.python.org/2/tutorial/modules.html
+    % \item https://docs.python.org/2.7/library/
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The End}
+  \begin{itemize}
+  \item Вопросы и предложения;
+  \item Планы на май.
+  \end{itemize}
+\end{frame}
+
+
+\end{document}
