@@ -1,7 +1,7 @@
 ![Courses logo]
 (https://github.com/budnyjj/courses_python/blob/master/misc/courses_logo.png)
 
-Здесь находятся материалы **курсов по Python**.
+Здесь находятся материалы **курсов Python для новичков**.
 
 Программа курсов рассчитана на четыре занятия:
 * Введение (intro): обзор языка, введение в синтаксис.
