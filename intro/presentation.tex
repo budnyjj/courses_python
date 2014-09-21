@@ -11,15 +11,54 @@
   \maketitle
 \end{frame}
 
-\begin{frame}{Темы курса}
+\begin{frame}{Об авторе этих слайдов}
+  \begin{minipage}{0.3\linewidth}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{my_logo.jpg}
+    \end{figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.6\linewidth}
+    Меня зовут Роман. 
+    
+    Я студент четвертого курса БГУИР.
+
+    Постоянно использую python для:
+    \begin{itemize}
+      \item учебы
+      \item работы
+      \item развлечения
+    \end{itemize}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Этот курс может быть полезен для \dots}
   \begin{itemize}
+    \item желающих научиться программировать
+    \item студентов технических специальностей
+    \item системных администраторов
+    \item ...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Программа курса}
+  \begin{minipage}{0.4\linewidth}
+    \begin{itemize}
     \item Базовые типы
     \item Контейнеры
     \item Функции
     \item Классы
     \item Исключения
-    \item IO
-  \end{itemize}
+    \end{itemize}
+  \end{minipage}
+  $ \Longrightarrow $
+  \hfill
+  \begin{minipage}{0.4\linewidth}
+    \begin{itemize}  
+    \item 8 лекционных часов
+    \item задачи на дом
+   \end{itemize}
+  \end{minipage}
 \end{frame}
 
 \begin{frame}{Сегодня}
@@ -30,6 +69,20 @@
   \item Условный оператор
   \item Операторы цикла
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Python}
+  Python --- язык программирования общего назначения,
+  ориентированный на повышение производительности разработчика и читаемости кода.
+\end{frame}
+
+\begin{frame}{Название языка}
+  Автор назвал язык в честь британского комедийного телешоу 1970-х
+  <<Летающий цирк Монти Пайтона>>.
+
+  \begin{figure}[H]
+    \includegraphics[width=0.8\linewidth]{python.jpg}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Особенности языка Python}
@@ -94,45 +147,43 @@ python2 hello.py
 
 \begin{frame}{Zen of Python}
 \footnotesize{
-The Zen of Python, by Tim Peters.
+Красивое лучше, чем уродливое.
 
-Beautiful is better than ugly.
+Явное лучше, чем неявное.
 
-Explicit is better than implicit.
+Простое лучше, чем сложное.
 
-Simple is better than complex.
+Сложное лучше, чем запутанное.
 
-Complex is better than complicated.
+Плоское лучше, чем вложенное.
 
-Flat is better than nested.
+Разреженное лучше, чем плотное.
 
-Sparse is better than dense.
+Читаемость имеет значение.
 
-Readability counts.
+Особые случаи не настолько особые, чтобы нарушать правила.
 
-Special cases aren't special enough to break the rules.
+При этом практичность важнее безупречности.
 
-Although practicality beats purity.
+Ошибки никогда не должны замалчиваться.
 
-Errors should never pass silently.
+Если не замалчиваются явно.
 
-Unless explicitly silenced.
+Встретив двусмысленность, отбрось искушение угадать.
 
-In the face of ambiguity, refuse the temptation to guess.
+Должен существовать один --- и, желательно, только один — очевидный способ сделать это.
 
-There should be one --- and preferably only one --- obvious way to do it.
+Хотя он поначалу может быть и не очевиден, если вы не голландец.
 
-Although that way may not be obvious at first unless you're Dutch.
+Сейчас лучше, чем никогда.
 
-Now is better than never.
+Хотя никогда зачастую лучше, чем прямо сейчас.
 
-Although never is often better than *right* now.
+Если реализацию сложно объяснить — идея плоха.
 
-If the implementation is hard to explain, it's a bad idea.
+Если реализацию легко объяснить — идея, возможно, хороша.
 
-If the implementation is easy to explain, it may be a good idea.
-
-Namespaces are one honking great idea --- let's do more of those!}
+Пространства имён — отличная штука! Будем делать их побольше!}
 \end{frame}
 
 \begin{frame}{Идентификаторы}
@@ -328,10 +379,9 @@ def fib(n):
     elif n == 1: return 1
     else: return fib(n-1) + fib(n-2)
 
-if __name__ == "__main__":
-    reqNumber = int(raw_input(
-    "Enter index of requested Fibonacci number: "))
-    print("Your number is:", fib(reqNumber))
+reqNumber = int(raw_input(
+"Enter index of requested Fibonacci number: "))
+print("Your number is:", fib(reqNumber))
 \end{lstlisting}
 \end{frame}
 
@@ -343,7 +393,9 @@ if __name__ == "__main__":
 \end{frame}
 
 \begin{frame}{Спасибо за внимание!}
-  Продолжение следует\dots
+  Репозиторий курса находится здесь: \\
+  https://github.com/budnyjj/courses\_python
+
 \end{frame}
 
 
