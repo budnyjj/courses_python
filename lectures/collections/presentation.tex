@@ -1,0 +1,307 @@
+\documentclass[hyperref={pdftex,unicode}]{beamer}
+
+\input{packages}
+\input{styles}
+
+\input{info}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}{Сегодня}
+  \begin{itemize}
+  \item Строки
+  \item Списки
+  \item Кортежи
+  \item Множества
+  \item Словари
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Строки и кодировки}
+  \begin{itemize}
+    \item в байте восемь битов
+    \item ASCII --- 128 символов
+    \item Unicode 6.0 --- 109384 символов (!)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Строки в Python 2}
+  \begin{minipage}{0.55\linewidth}
+    \textbf{str} ('string'):
+    \begin{itemize}
+    \item представляет собой последовательность байтов
+    \item требует меньше памяти для хранения
+    \end{itemize}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.4\linewidth}
+    \textbf{unicode} (u'строка'):
+    \begin{itemize}
+    \item представляет собой текст
+    \item подходит для локализации
+    \end{itemize}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Строки в Python 3}
+  \begin{center}
+    \textbf{str} ('some data') $ \Rightarrow $ \textbf{bytes} (b'some data') \\
+    \vspace{1em}
+    \textbf{unicode} (u'строка') $ \Rightarrow $ \textbf{str} ('строка')
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Объявление строк}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+ordinary_string = 'hello'     # == "hello"
+print ordinary_string
+
+unicode_string  = u'hello'
+print unicode_string
+
+multiline_string = '''
+  This is multiline text.
+  It's stored in variable as written.
+'''
+print multiline_string
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{String --- immutable!}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+  a = 'string'
+  ref_a = a
+  print a
+  print ref_a
+
+  a = 'new ' + a
+  print a
+  print ref_a
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{String: методы}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+a = ' ...hello, my dear FrIeNdS!... '
+print a
+
+print a.center(80, '_')
+print a.count('e')
+print a.endswith('!')
+print a.find('my')
+
+print a.isspace()
+
+print a.lower()
+print a.upper()
+print a.title()
+
+print a.strip(' .')
+print a.replace(',', '!')
+print a.split(' ')
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{String: пример}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+usr_input = raw_input("Input some words in english: ")
+
+words_upper = []
+for word in usr_input.split(' '):
+    if word.isupper():
+        words_upper.append(word)
+
+print 'Number of uppercase words:', len(words_upper)
+print 'List of them:', words_upper
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Вопросы}
+  \begin{itemize}
+  \item Как создать строку, содержащую кавычки?
+  \item Как создать копию строки?
+  \item Как вывести строку справа-налево?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{List --- универсальный контейнер}
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+# basic
+print [1, 2, 3]
+
+# from map
+def cube(x): return x*x*x
+print map(cube, range(1, 11))
+
+# from filter
+def f(x): return x % 3 == 0 or x % 5 == 0
+print filter(f, range(2, 25))
+
+# list comprehension
+print [x**2 for x in range(10)]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{List: методы}
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+lst = ['a', 1, ]
+print lst
+
+lst.append('a')
+print lst
+
+lst.extend([1, 2, 3])
+print lst
+
+lst.insert(3, 'I')
+print lst
+
+lst.pop()
+print lst
+
+print lst.index(1)
+
+lst.reverse()
+print lst
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Вопросы}
+  \begin{itemize}
+  \item Как удалить элемент из списка?
+  \item Как отсортировать список по своим правилам?
+  \item Как создать копию списка?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tuple --- неизменяемый список}
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+a = (1, 2)
+b = tuple([3, 4])
+print a
+print b
+
+a, b = b, a
+print a
+print b
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Вопросы}
+  \begin{itemize}
+  \item Зачем нужен tuple?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Set --- математичекое множество} 
+  \begin{itemize}
+  \item Хранит только уникальные элементы
+  \item Порядок не важен
+  \item Определены операции над множествами
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Set: операции}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+a = set('abracadabra')
+b = set('alacazam')
+
+print a
+print b
+
+print a - b           # letters in a but not in b
+print a | b           # letters in either a or b
+           
+print a & b           # letters in both a and b
+print a ^ b           # letters in a or b but not both
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Вопросы}
+  \begin{itemize}
+  \item Как убрать дубликаты из списка?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dict --- хранилище типа ключ-значение}
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+tel = {'jack': 4098, 'sape': 4139}
+tel['guido'] = 4127
+
+print tel
+print tel.keys()
+print tel.values()
+
+# dict comprehension
+print {x: x**2 for x in (2, 4, 6)}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Dict: обход}
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=none]
+knights = {
+    'gallahad': 'the pure',
+    'robin':    'the brave',
+}
+  \end{lstlisting}
+  \begin{minipage}{0.58\linewidth}
+    \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+for k, v in knights.iteritems():
+    print k, v
+    \end{lstlisting}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.36\linewidth}
+    \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+for k in knights():
+    print knights[k]
+    \end{lstlisting}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Dict: пример}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+infile = open('input.txt', 'r')
+words = infile.read().split()
+infile.close()
+
+counts = {}
+for w in words:
+    counts[w] = counts.get(w,0) + 1
+
+outfile = open('output.txt', 'w')
+for w in sorted(counts, key=counts.get, reverse=True):
+    outfile.write("| {:20} | {} time(s) |\n".format(
+    w, counts[w]))
+outfile.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Нет предела совершенству}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
+from collections import Counter
+
+with open('input.txt', 'r') as infile:
+    words = infile.read().split()
+
+counts = Counter(words)
+
+with open('output.txt', 'w') as outfile:
+    for w,n in counts.most_common():
+        outfile.write("| {:20} | {} time(s) |\n".format(
+                      w, n))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Спасибо за внимание!}
+  Репозиторий курса находится здесь: \\
+  https://github.com/budnyjj/courses\_python
+\end{frame}
+
+
+\end{document}
