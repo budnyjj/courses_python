@@ -14,44 +14,39 @@
 \begin{frame}{Обо мне}
   \begin{minipage}{0.3\linewidth}
     \begin{figure}[H]
-      \includegraphics[width=1\linewidth]{my_logo.jpg}
+      \includegraphics[width=1\linewidth]{me.jpg}
     \end{figure}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.6\linewidth}
-    Меня зовут Роман. 
-    
-    Я студент четвертого курса БГУИР.
-
-    Постоянно использую python для:
-    \begin{itemize}
-      \item учебы
-      \item развлечения
-    \end{itemize}
+  \begin{minipage}{0.65\linewidth}
+    Меня зовут Роман. \\
+    Я студент пятого курса БГУИР. \\
+    Paботаю в Epam Systems. \\
+    В свободное время музицирую и \\
+    играю в настольный теннис.
   \end{minipage}
 \end{frame}
 
 \begin{frame}{О языке}
-  Python используется для:
+  Python используется для\dots
   \begin{itemize}
-    \item научных целей
-    \item написания веб-приложений
-    \item администрирования компьютерных систем
-    \item связывания компонентов, написанных на других языках
+  \item разработки программного обеспечения
+  \item администрирования компьютерных систем
+  \item научных целей
   \end{itemize}
-
-  Python используют Google, Yahoo!, CERN, NASA\footnote[frame]{
+  
+  Python используют такие организации, как \\
+  Google, IBM, Red Hat, CERN, NASA\footnote[frame]{
     Более полный список находится здесь: 
-    https://wiki.python.org/moin/OrganizationsUsingPython}.
-
-  Python есть практически в каждом дистрибутиве Linux.
+    https://wiki.python.org/moin/OrganizationsUsingPython}. \\
+  Python есть в каждом дистрибутиве Linux.
 \end{frame}
 
 \begin{frame}{О курсе}
-  Этот курс может быть полезен для тех, кто\dots
+  Этот курс для тех, кто\dots
   \begin{itemize}
-    \item хочет научиться программировать
-    \item хочет изучить еще один язык
+    \item хочет начать программировать
+    \item хочет освоить еще один язык
     \item хочет окунуться в мир opensource
   \end{itemize}
 \end{frame}
@@ -61,8 +56,8 @@
   \begin{itemize}
     \item изучите синтаксис языка Python
     \item будете знать и использовать основные возможности языка
-    \item сможете решать несложные прикладные задачи 
-    \item будете знать, куда двигаться дальше
+    \item сможете решать простые прикладные задачи
+    \item будете знать, что делать дальше
   \end{itemize}
 \end{frame}
 
@@ -72,8 +67,7 @@
     \item Базовые типы
     \item Контейнеры
     \item Функции
-    \item Классы
-    \item Исключения
+    \item ООП
     \end{itemize}
   \end{minipage}
   $ \Longrightarrow $
@@ -112,8 +106,8 @@
 
 \begin{frame}{Особенности языка Python}
   \begin{itemize}
-    \item Интерпретируемый
     \item Высокоуровневый
+    \item Интерпретируемый
     \item Динамически типизируемый
     \item Поддерживает ООП
   \end{itemize}
@@ -127,7 +121,7 @@
     https://wiki.python.org/moin/Python2orPython3}
 \end{frame}
 
-\begin{frame}{Getting help}
+\begin{frame}{Документация}
   \begin{itemize}
     \item https://docs.python.org
     \item opennet.ru/docs/RUS/python/
@@ -137,15 +131,15 @@
 
 \begin{frame}[fragile]{Hello, world!}
   \begin{itemize}
-  \item Interactive
+  \item REPL:
     \begin{lstlisting}
 python
->>> print "Hello, world!"
+>>> print("Hello, world!")
     \end{lstlisting}
-  \item Script hello.py:
+  \item hello.py:
     \begin{lstlisting}[numbers=left]
-#!/usr/bin/python2
-print "Hello, world!"
+#!/usr/bin/env python
+print("Hello, world!")
     \end{lstlisting}
 
   \begin{minipage}{0.4\linewidth}
@@ -157,75 +151,52 @@ chmod +x hello.py
    \hfill or \hfill
    \begin{minipage}{0.4\linewidth}
      \begin{lstlisting}[language=bash]
-python2 hello.py
+python hello.py
      \end{lstlisting}
    \end{minipage}
 
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{import this}
-  \begin{center}
-    \texttt{python -c "import this"}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Zen of Python}
+\begin{frame}{\texttt{python -c "import this"}}
 \footnotesize{
-Красивое лучше, чем уродливое.
-
-Явное лучше, чем неявное.
-
-Простое лучше, чем сложное.
-
-Сложное лучше, чем запутанное.
-
-Плоское лучше, чем вложенное.
-
-Разреженное лучше, чем плотное.
-
-Читаемость имеет значение.
-
-Особые случаи не настолько особые, чтобы нарушать правила.
-
-При этом практичность важнее безупречности.
-
-Ошибки никогда не должны замалчиваться.
-
-Если не замалчиваются явно.
-
-Встретив двусмысленность, отбрось искушение угадать.
-
-Должен существовать один --- и, желательно, только один — очевидный способ сделать это.
-
-Хотя он поначалу может быть и не очевиден, если вы не голландец.
-
-Сейчас лучше, чем никогда.
-
-Хотя никогда зачастую лучше, чем прямо сейчас.
-
-Если реализацию сложно объяснить — идея плоха.
-
-Если реализацию легко объяснить — идея, возможно, хороша.
-
-Пространства имён — отличная штука! Будем делать их побольше!}
+Красивое лучше, чем уродливое. \\
+Явное лучше, чем неявное. \\
+Простое лучше, чем сложное. \\
+Сложное лучше, чем запутанное. \\
+Плоское лучше, чем вложенное. \\
+Разреженное лучше, чем плотное. \\
+Читаемость имеет значение. \\
+Особые случаи не настолько особые, чтобы нарушать правила. \\
+При этом практичность важнее безупречности. \\
+Ошибки никогда не должны замалчиваться. \\
+Если не замалчиваются явно. \\
+Встретив двусмысленность, отбрось искушение угадать. \\
+Должен существовать один --- и, желательно, 
+только один — очевидный способ сделать это. \\
+Хотя он поначалу может быть и не очевиден, если вы не голландец. \\
+Сейчас лучше, чем никогда. \\
+Хотя никогда зачастую лучше, чем прямо сейчас. \\
+Если реализацию сложно объяснить --- идея плоха. \\
+Если реализацию легко объяснить --- идея, возможно, хороша. \\
+Пространства имён — отличная штука! Будем делать их побольше!
+}
 \end{frame}
 
-\begin{frame}{Идентификаторы}
+\begin{frame}{Литералы}
   \begin{itemize}
     \item A-Z, a-z, 0-9, \_
     \item Case sensitive
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Стандартные типы данных}
+\begin{frame}{Базовые типы данных}
   \begin{itemize}
     \item Boolean
-    \item Numeric: int, float, long, complex
-    \item String
-    \item List
-    \item Tuple
-    \item Dictionary\footnote[frame]{
+    \item Integer
+    \item Float
+    \item Complex
+    \item String\footnote[frame]{
         Существуют различия в типах данных в разных версиях Python: \\
         https://docs.python.org/2.7/library/stdtypes.html \\
         https://docs.python.org/3.4/library/stdtypes.html}
@@ -254,15 +225,9 @@ print name, "|".join(name)
   \begin{lstlisting}[numbers=left]
 type(x)
 int(x[, base])
-long(x[, base])
 float(x)
 complex(real[,imag])
 str(x)
-repr(x)
-eval(x)
-chr(x)
-unichr(x)
-ord(x)
 \end{lstlisting}
 \end{frame}
 
@@ -278,7 +243,7 @@ is                       # identity
 
 \begin{frame}[fragile]{Пара слов про контейнеры}
   \begin{itemize}
-  \item List
+  \item<1-> List
     \begin{lstlisting}[numbers=left]
 l = [1, 2]
 l.append(3)
@@ -286,7 +251,7 @@ print l
 l.append(l)
 print l
     \end{lstlisting}
-  \item Dict
+  \item<2-> Dict
     \begin{lstlisting}[numbers=left]
 d = {"one": 1, "two": 2,}
 d["three"] = 3
@@ -299,15 +264,19 @@ print d
 
 \begin{frame}[fragile]{Примечания}
   \begin{itemize}
-    \item Boolean, Numeric, Complex, String, Tuple are \textbf{immutable}
-    \item List, Dictionary are \textbf{mutable}
     \item \lstinline$'foo' == "foo"$
+
+    \item Comment:
+      \begin{lstlisting}
+# This is a comment example.
+      \end{lstlisting}
+
     \item Docstring:
       \begin{lstlisting}
 """
 This is a docstring example.
 
-It is useful mainly for documentation purposes.
+It is used for documentation purposes.
 """
       \end{lstlisting}
   \end{itemize}
@@ -333,20 +302,31 @@ else:
 words = ["cat", "window", "defenestrate"]
 for w in words:
     print w, len(w)
+\end{lstlisting}
+\end{frame}
 
-# range(5)         == [0, 1, 2, 3, 4]
-# range(3,10)      == [3, 4, 5, 6, 7, 8, 9]
-# range(3, 10, 2)  == [3, 5, 7, 9]
-# range(3, 10, -2) == [9, 7, 5, 3]
+\begin{frame}[fragile]{Функция range}
+  \begin{lstlisting}[numbers=left]
+print(range(5))
+print(range(3,10))
+print(range(3, 10, 2))
+print(range(3, 10, -2))
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Оператор цикла for}
+  \begin{lstlisting}[numbers=left]
+words = ["cat", "window", "defenestrate"]
 
 for i in range(len(words)):       # ugly
     print i, words[i]
 
 for i, word in enumerate(words):  # much better
     print i, word
-
 \end{lstlisting}
 \end{frame}
+
 
 \begin{frame}[fragile]{Оператор цикла for}
   \begin{lstlisting}[numbers=left]
@@ -377,7 +357,7 @@ while True:
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{import math}
+\begin{frame}[fragile]{Math module}
 \begin{lstlisting}[numbers=left]
 import math
 dir(math)
@@ -385,8 +365,7 @@ help(math)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Пример решения задачи \\ <<найти n-тоe число Фибоначчи>>\footnote[frame]{
-http://stackoverflow.com/questions/494594/how-to-write-the-fibonacci-sequence-in-python}}
+\begin{frame}[fragile]{Задача <<поиск n-того числа Фибоначчи>>}
 \begin{equation*}
   F_n = \left\{
     \begin{array}{l l}
@@ -395,11 +374,13 @@ http://stackoverflow.com/questions/494594/how-to-write-the-fibonacci-sequence-in
       F_{n-1} + F_{n-2} & \quad \text{при n > 1.}
     \end{array} \right.
 \end{equation*}
-\smallskip
+\end{frame}
 
+\begin{frame}[fragile]{Задача <<поиск n-того числа Фибоначчи>>\footnote[frame]{
+http://stackoverflow.com/questions/494594/how-to-write-the-fibonacci-sequence-in-python}}
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,numbers=left]
 def fib(n):
-""" Return n-th number in Fibonacci sequence. """
+    """ Return n-th number in Fibonacci sequence. """
     if n == 0: return 0
     elif n == 1: return 1
     else: return fib(n-1) + fib(n-2)
@@ -412,16 +393,25 @@ print("Your number is:", fib(reqNumber))
 
 \begin{frame}{Задача <<n-тоe число Фибоначчи>>}
   \begin{itemize}
-  \item Что будет, если мы попытаемся вычислить fib(-1)?
-  \item Можно ли оптимизировать процесс вычислений? \\ Как это сделать?
+  \item Всегда ли эта программа работает корректно?
+  \item Как оптимизировать процесс вычислений?
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Спасибо за внимание!}
-  Репозиторий курса находится здесь: \\
-  https://github.com/budnyjj/courses\_python
-
+\begin{frame}{Домашнее задание}
+  \begin{enumerate}
+  \item Исправить ошибки
+  \item Оптимизировать рекурсивную реализацию
+  \item Написать нерекурсивную реализацию
+  \item Сравнить производительность
+  \end{enumerate}
 \end{frame}
 
-
+\begin{frame}{Спасибо за внимание!}
+  \begin{itemize}
+  \item https://github.com/budnyjj/courses\_python
+  \item https://vk.com/budnyjj
+  \item budnyjj@gmail.com
+  \end{itemize}
+\end{frame}
 \end{document}
