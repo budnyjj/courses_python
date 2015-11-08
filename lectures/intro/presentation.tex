@@ -34,11 +34,10 @@
   \item администрирования компьютерных систем
   \item научных целей
   \end{itemize}
-  
-  Python используют такие организации, как \\
-  Google, IBM, Red Hat, CERN, NASA\footnote[frame]{
-    Более полный список находится здесь: 
-    https://wiki.python.org/moin/OrganizationsUsingPython}. \\
+
+  Python используют Google, IBM, Red Hat, CERN, NASA\footnote[frame]{
+    Более полный список находится здесь:
+    https://wiki.python.org/moin/OrganizationsUsingPython}\dots \\
   Python есть в каждом дистрибутиве Linux.
 \end{frame}
 
@@ -54,7 +53,7 @@
 \begin{frame}{Цели курса}
   По прохождении курса вы\dots
   \begin{itemize}
-    \item изучите синтаксис языка Python
+    \item изучите синтаксис языка
     \item будете знать и использовать основные возможности языка
     \item сможете решать простые прикладные задачи
     \item будете знать, что делать дальше
@@ -73,7 +72,7 @@
   $ \Longrightarrow $
   \hfill
   \begin{minipage}{0.4\linewidth}
-    \begin{itemize}  
+    \begin{itemize}
     \item 8 часов лекций
     \item задания на дом
    \end{itemize}
@@ -82,7 +81,7 @@
 
 \begin{frame}{Сегодня}
   \begin{itemize}
-  \item Обзор языка
+  \item Краткий обзор языка
   \item Hello, world!
   \item Базовые типы данных
   \item Условный оператор
@@ -122,11 +121,11 @@
 \end{frame}
 
 \begin{frame}{Документация}
-  \begin{itemize}
-    \item https://docs.python.org
-    \item opennet.ru/docs/RUS/python/
+  \begin{enumerate}
     \item help()
-  \end{itemize}
+    \item docs.python.org
+    \item opennet.ru/docs/RUS/python/
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]{Hello, world!}
@@ -150,6 +149,7 @@ chmod +x hello.py
    \end{minipage}
    \hfill or \hfill
    \begin{minipage}{0.4\linewidth}
+     \vspace{3.5mm}
      \begin{lstlisting}[language=bash]
 python hello.py
      \end{lstlisting}
@@ -172,8 +172,8 @@ python hello.py
 Ошибки никогда не должны замалчиваться. \\
 Если не замалчиваются явно. \\
 Встретив двусмысленность, отбрось искушение угадать. \\
-Должен существовать один --- и, желательно, 
-только один — очевидный способ сделать это. \\
+Должен существовать один --- и, желательно, \\
+\hspace{20.6mm} только один --- очевидный способ сделать это. \\
 Хотя он поначалу может быть и не очевиден, если вы не голландец. \\
 Сейчас лучше, чем никогда. \\
 Хотя никогда зачастую лучше, чем прямо сейчас. \\
@@ -205,19 +205,19 @@ python hello.py
 
 \begin{frame}[fragile]{Базовые типы данных}
   \begin{lstlisting}[numbers=left]
-#!/usr/bin/python
+#!/usr/bin/env python
 
 logic   = True         # A boolean assignment
-counter = 103          # An integer 
+counter = 103          # An integer
 miles   = 1000.0       # A floating point
-cmplx   = 1 + 1j       # A complex 
+cmplx   = 1 + 1j       # A complex
 name    = "John"       # A string
 
-print logic, not logic
-print counter, counter * miles
-print miles, miles / counter, miles // counter
-print cmplx, cmplx.conjugate()
-print name, "|".join(name)
+print(logic, not logic)
+print(counter, counter * miles)
+print(miles, miles / counter, miles // counter)
+print(cmplx, cmplx.conjugate())
+print(name, "|".join(name))
 \end{lstlisting}
 \end{frame}
 
@@ -247,17 +247,17 @@ is                       # identity
     \begin{lstlisting}[numbers=left]
 l = [1, 2]
 l.append(3)
-print l
+print(l)
 l.append(l)
-print l
+print(l)
     \end{lstlisting}
   \item<2-> Dict
     \begin{lstlisting}[numbers=left]
 d = {"one": 1, "two": 2,}
 d["three"] = 3
-print d
+print(d)
 del(d["two"])
-print d
+print(d)
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -287,13 +287,13 @@ It is used for documentation purposes.
 x = int(raw_input("Please enter an integer: "))
 if x < 0:
     x = 0
-    print "Negative changed to zero"
+    print("Negative changed to zero")
 elif x == 0:
-    print "Zero"
+    print("Zero")
 elif x == 1:
-    print "Single"
+    print("Single")
 else:
-    print "More"
+    print("More")
   \end{lstlisting}
 \end{frame}
 
@@ -301,7 +301,7 @@ else:
   \begin{lstlisting}[numbers=left]
 words = ["cat", "window", "defenestrate"]
 for w in words:
-    print w, len(w)
+    print(w, len(w))
 \end{lstlisting}
 \end{frame}
 
@@ -320,10 +320,10 @@ print(range(3, 10, -2))
 words = ["cat", "window", "defenestrate"]
 
 for i in range(len(words)):       # ugly
-    print i, words[i]
+    print(i, words[i])
 
 for i, word in enumerate(words):  # much better
-    print i, word
+    print(i, word)
 \end{lstlisting}
 \end{frame}
 
@@ -333,10 +333,10 @@ for i, word in enumerate(words):  # much better
 for n in range(2, 10):
      for x in range(2, n):
          if n % x == 0:
-             print n, "equals", x, "*", n/x
+             print(n, "equals", x, "*", n/x)
              break
      else:
-         print n, "is a prime number"
+         print(n, "is a prime number")
   \end{lstlisting}
 \end{frame}
 
@@ -344,9 +344,9 @@ for n in range(2, 10):
   \begin{lstlisting}[numbers=left]
 for num in range(2, 10):
     if num % 2 == 0:
-         print "Found an even number", num
+         print("Found an even number", num)
          continue
-    print "Found a number", num
+    print("Found a number", num)
   \end{lstlisting}
 \end{frame}
 
