@@ -35,22 +35,22 @@ print(dir(cube))
 \begin{frame}[fragile]{Передача аргументов в функцию}
       \begin{lstlisting}[numbers=left]
 def modify(string, lst):
-    string = "new " + string
+    string = 'new ' + string
     for idx, val in enumerate(lst):
-        lst[idx] = "new " + val
+        lst[idx] = 'new ' + val
 
-names = ["cat", "book", "cinema"]
-s = "machine"
+names = ['cat', 'book', 'cinema']
+s = 'machine'
 
-print "BEFORE MODIFY()"
-print names
-print s
+print('BEFORE MODIFY()')
+print(names)
+print(s)
 
 modify(s, names)
 
-print "AFTER MODIFY()"
-print names
-print s
+print('AFTER MODIFY()')
+print(names)
+print(s)
     \end{lstlisting}
 \end{frame}
 
@@ -74,31 +74,31 @@ def power(x, y=2):
        r = r * x
     return r
 
-print power(3)
-print power(3, 3)
-print power(5, 5)
+print(power(3)
+print(power(3, 3))
+print(power(5, 5))
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Задание значения аргумента по имени}
   \begin{lstlisting}[numbers=left]
-def display(name, age, sex="M"):
-   print "Name: ", name
-   print "Age: ", age
-   print "Sex: ", sex
+def display(name, age, sex='M'):
+   print('Name: ', name)
+   print('Age: ', age)
+   print('Sex: ', sex)
 
-display("Lary", 43, "M")
-display("Lary", age=43)
-display("Lary", age=43, sex="M")
-display(age=43, name="Lary", sex="M")
+display('Lary', 43, 'M')
+display('Lary', age=43)
+display('Lary', age=43, sex='M')
+display(age=43, name='Lary', sex='M')
 
-display(age=24, name="Joan", "F")         # error
+display(age=24, name='Joan', 'F')         # error
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Список аргументов переменной длины}
   \begin{lstlisting}[numbers=left]
-print sum
+print(sum)
 
 def sum(*args):
    '''Function returns the sum of all values'''
@@ -107,10 +107,10 @@ def sum(*args):
       r += i
    return r
 
-print sum
-print sum.__doc__
-print sum(1, 2, 3)
-print sum(1, 2, 3, 4, 5)
+print(sum)
+print(sum.__doc__)
+print(sum(1, 2, 3))
+print(sum(1, 2, 3, 4, 5))
   \end{lstlisting}
 \end{frame}
 
@@ -118,16 +118,16 @@ print sum(1, 2, 3, 4, 5)
   \begin{lstlisting}[numbers=left]
 def display(**details):
    for i in details:
-      print "%s: %s" % (i, details[i])
+      print('{}: {}'.format(i, details[i]))
 
-display(name="Lary", age=43, sex="M")
+display(name='Lary', age=43, sex='M')
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Особенности передачи аргументов}
   \begin{lstlisting}[numbers=left]
 def func(a,b,c,d=False,*args,**kwargs):
-    print a, b, c, d, args, kwargs
+    print(a, b, c, d, args, kwargs)
 
 func(*[1,2,3,4,5], **{'6':7})
 func(*[1,2,3,], **{'d':7})
@@ -137,24 +137,25 @@ func(1, 2, *[3,], **{'d':7})
 
 \begin{frame}[fragile]{Область видимости}
   \begin{lstlisting}[numbers=left]
-name = "Jack"
+name = 'Jack'
 
 def f():
-   # global name 
-   name = "Robert"
-   print "Within function:", name
-   print locals()
-   print globals()
+   # global name
+   name = 'Robert'
+   print('Within function:', name)
+   print(locals())
+   print(globals())
 
-print "Outside function:", name
+print('Outside function:', name)
 f()
-print "Outside function:", name
+print('Outside function:', name)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Объекты первого класса}
-  ``Объектами первого класса в контексте конкретного языка программирования называются сущности,
-  которые могут быть переданы как параметр, возвращены из функции, присвоены переменной''\footnote[frame]{
+  ``Объектами первого класса называются сущности,
+  которые могут быть переданы как параметр,
+  возвращены из функции, присвоены переменной''\footnote[frame]{
     http://en.wikipedia.org/wiki/First-class\_citizen}.
 \end{frame}
 
@@ -164,12 +165,12 @@ def square(x):
     return x ** 2
 
 s = square
-print s(5)
+print(s(5))
 
 def ff(f, x):
     return f(f(x) - 1)
 
-print ff(s, 5)
+print(ff(s, 5))
 \end{lstlisting}
 \end{frame}
 
@@ -180,15 +181,15 @@ print_assign = lambda name, value:\
                       name + '=' + str(value)
 adder = lambda x, y: x+y
 
-print lowercase("THETA")
-print print_assign("two", 2)
-print adder(2, 3)
+print(lowercase('THETA'))
+print(print_assign('two', 2))
+print(adder(2, 3))
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Simple is better than complex}
   \begin{lstlisting}
-items = [("one", 1), ("two", 2), ("three", 3)]
+items = [('one', 1), ('two', 2), ('three', 3)]
 # 1 + 2 + 3 = ?
 \end{lstlisting}
 
@@ -220,49 +221,49 @@ total = sum(b for a,b in items)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Декораторы}
-\begin{minipage}{0.4\textwidth}
-  \begin{lstlisting}[]
-def func(...)
-...
-def wrapper(...)
-...
-f = wrapper(func)
-  \end{lstlisting}
-\end{minipage}
-\Large{vs}
-\hfill
-\begin{minipage}{0.45\textwidth}
-  \begin{lstlisting}
-def wrapper(...)
-...
-@wrapper
-def func(...)
-...
-  \end{lstlisting}   
-\end{minipage}
-\end{frame}
+% \begin{frame}[fragile]{Декораторы}
+% \begin{minipage}{0.4\textwidth}
+%   \begin{lstlisting}[]
+% def func(...)
+% ...
+% def wrapper(...)
+% ...
+% f = wrapper(func)
+%   \end{lstlisting}
+% \end{minipage}
+% \Large{vs}
+% \hfill
+% \begin{minipage}{0.45\textwidth}
+%   \begin{lstlisting}
+% def wrapper(...)
+% ...
+% @wrapper
+% def func(...)
+% ...
+%   \end{lstlisting}
+% \end{minipage}
+% \end{frame}
 
-\begin{frame}[fragile]{Пример декоратора}
-  \begin{lstlisting}[numbers=left]
-import time
+% \begin{frame}[fragile]{Пример декоратора}
+%   \begin{lstlisting}[numbers=left]
+% import time
 
-def timer(f):
-    def tmp(*args, **kwargs):
-        t = time.time()
-        res = f(*args, **kwargs)
-        print "Time of function evaluation: \
-               {:f}".format(time.time()-t)
-        return res
-    return tmp
+% def timer(f):
+%     def tmp(*args, **kwargs):
+%         t = time.time()
+%         res = f(*args, **kwargs)
+%         print('Time of function evaluation: \
+%                {:f}'.format(time.time()-t))
+%         return res
+%     return tmp
 
-@timer
-def func(x, y):
-    return x + y
+% @timer
+% def func(x, y):
+%     return x + y
 
-print func(1, 2)
-\end{lstlisting}
-\end{frame}
+% print(func(1, 2))
+% \end{lstlisting}
+% \end{frame}
 
 
 \begin{frame}[fragile]{Модуль fibo.py}
@@ -272,7 +273,7 @@ print func(1, 2)
 def fib(n):    # write Fibonacci series up to n
     a, b = 0, 1
     while b < n:
-        print b,
+        print(b),
         a, b = b, a+b
 
 def fib2(n): # return Fibonacci series up to n
@@ -283,7 +284,7 @@ def fib2(n): # return Fibonacci series up to n
         a, b = b, a+b
     return result
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     import sys
     fib(int(sys.argv[1]))
 \end{lstlisting}
@@ -318,18 +319,18 @@ python2 fibo.py 50
 sound/                # Top-level package
       __init__.py     # Initialize the sound package
       formats/        # Subpackage for file format conversions
-              __init__.py 
-              wavread.py  
-              wavwrite.py 
-              aiffread.py 
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
               aiffwrite.py
-              ...         
+              ...
       effects/        # Subpackage for sound effects
-              __init__.py 
-              echo.py     
-              surround.py 
-              reverse.py  
-              ...         
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
       filters/        # Subpackage for filters
               __init__.py
               equalizer.py
@@ -339,65 +340,66 @@ sound/                # Top-level package
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Обзор содержимого стандартной библиотеки}
-\footnotesize{  
+\begin{frame}{Cтандартная библиотека}
+\footnotesize{
   \begin{minipage}{0.5\linewidth}
     \centering Организация ВП
     \begin{multicols}{2}
     \begin{itemize}
+    \item \textbf{[c]math}
+    \item \textbf{random}
+    \item \textbf{collections}
+    \item \textbf{itertools}
+    \item \textbf{functools}
     \item \textbf{re}
+    \item \textbf{threading}
     \item difflib
     \item datetime
     \item calendar
-    \item \textbf{collections}
     \item heapq
     \item bisect
     \item array
     \item Queue
     \item mutex
-    \item math, cmath
-    \item random
     \item fraction
     \item pprint
-    \item \textbf{itertools}
-    \item functools
     \item hashlib
-    \item threading
-    \end{itemize}    
+    \end{itemize}
   \end{multicols}
   \end{minipage}
   \hfill
   \begin{minipage}{0.25\linewidth}
+    \vspace{10mm}
     \centering Ввод и вывод
+    \vspace{2.5mm}
     \begin{itemize}
-    \item pickle
-    \item gdbm
-    \item zlib
-    \item csv
-    \item email
-    \item json
-    \item HTMLParser
-    \item xml.*
-    \item webbrowser
+    \item \textbf{pickle}
+    \item \textbf{json}
+    \item \textbf{xml.*}
+    \item \textbf{csv}
     \item urllib[2]
     \item httplib
+    \item gdbm
+    \item zlib
+    \item email
+    \item HTMLParser
+    \item webbrowser
     \end{itemize}
   \end{minipage}
   \hfill
   \begin{minipage}{0.2\linewidth}
-    \centering Поддержка, \\
-      взаимодействие \\
-      с платформой
+    \centering Разное
+    \vspace{2mm}
     \begin{itemize}
-    \item os
-    \item os.path
-    \item argparse
-    \item gettext
+    \item \textbf{os}
+    \item \textbf{os.path}
+    \item \textbf{argparse}
+    \item \textbf{unittest}
+    \item \textbf{logging}
+    \item \textbf{gettext}
     \item locale
     \item pydoc
-    \item logging
-    \item unittest
-    \item pdb    
+    \item pdb
     \end{itemize}
   \end{minipage}
 }
@@ -405,18 +407,20 @@ sound/                # Top-level package
 
 \begin{frame}{Полезные ссылки}
   \begin{itemize}
-    \item http://zetcode.com/lang/python/functions/
-    \item https://docs.python.org/2/library/functions.html
-    \item https://docs.python.org/2/howto/functional.html
-    \item https://docs.python.org/2/tutorial/modules.html
-    \item https://docs.python.org/2.7/library/
+    \item zetcode.com/lang/python/functions/
+    \item docs.python.org/2/library/functions.html
+    \item docs.python.org/2/howto/functional.html
+    \item docs.python.org/2/tutorial/modules.html
+    \item docs.python.org/2.7/library/
   \end{itemize}
 \end{frame}
 
-\begin{frame}{  Спасибо за внимание!}
-  Репозиторий курса находится здесь: \\
-  https://github.com/budnyjj/courses\_python
+\begin{frame}{Спасибо за внимание!}
+  \begin{itemize}
+  \item https://github.com/budnyjj/courses\_python
+  \item https://vk.com/budnyjj
+  \item budnyjj@gmail.com
+  \end{itemize}
 \end{frame}
-
 
 \end{document}
